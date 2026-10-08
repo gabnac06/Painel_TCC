@@ -1,4 +1,4 @@
-# Fogo em Lavras — estudo interativo do TCC
+# Fogo em Lavras-MG — estudo interativo do TCC
 
 Portal de exploração do mapeamento do fogo em Lavras-MG, entre 2011 e 2025, com identidade visual baseada na logo da Universidade Federal de Lavras fornecida para o projeto.
 
