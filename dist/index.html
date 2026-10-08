@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Fogo em Lavras · Estudo interativo do TCC</title>
+ <meta name="description" content="Explore o mapeamento do fogo em Lavras-MG entre 2011 e 2025: mapas em 30 m, áreas queimadas, sazonalidade, recorrência e cobertura da terra.">
+ <link rel="icon" href="ufla-logo.png"><link rel="stylesheet" href="lib/leaflet.css"><link rel="stylesheet" href="styles.css">
+ <script defer src="lib/leaflet.js"></script><script defer src="lib/echarts.js"></script><script defer src="app.js"></script><script defer src="vector-maps.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Ir para a análise</a>
+<aside class="sidebar">
+ <div class="brand"><img src="ufla-logo.png" alt="Universidade Federal de Lavras" width="155" height="81"><div class="brand-rule"></div><p>ESTUDO INTERATIVO DO TCC</p><h1>Fogo em <br>Lavras</h1><span class="brand-period">2011 — 2025</span></div>
+ <nav aria-label="Seções do estudo">
+  <button class="nav active" data-view="overview"><span class="nav-icon">◫</span>Visão geral</button>
+  <button class="nav" data-view="season"><span class="nav-icon">▥</span>Sazonalidade</button>
+  <button class="nav" data-view="recurrence"><span class="nav-icon">◎</span>Recorrência</button>
+  <button class="nav" data-view="coverage"><span class="nav-icon">▤</span>Cobertura da terra</button>
+  <button class="nav" data-view="methods"><span class="nav-icon">≡</span>Dados e método</button>
+ </nav>
+ <div class="sidebar-foot"><strong>Lavras · Minas Gerais</strong><span>MapBiomas Fogo C5<br>Cobertura e Uso C11 · 30 m</span><small>Análise retrospectiva e descritiva</small></div>
+</aside>
+<main id="main">
+ <header class="topbar"><div><span class="eyebrow">UNIVERSIDADE FEDERAL DE LAVRAS</span><h2 id="view-title">O território e a dinâmica do fogo</h2><p id="view-subtitle">Explore onde, quando e em quais coberturas houve queima mapeada.</p></div><button id="export" class="button secondary">Exportar seleção <span aria-hidden="true">↓</span></button></header>
+ <section class="filters" aria-label="Filtros de análise">
+  <div class="filter"><label for="start">De</label><select id="start"></select></div>
+  <div class="filter"><label for="end">Até</label><select id="end"></select></div>
+  <div class="filter month-filter"><label for="month">Mês mapeado</label><select id="month"><option value="0">Todos os meses</option></select></div>
+  <div class="filter class-filter"><label for="class">Cobertura no ano da queima</label><select id="class"><option value="all">Todas as classes</option></select></div>
+  <button id="reset" class="text-button">Limpar filtros</button>
+  <div class="quick-periods" aria-label="Períodos de comparação"><button data-period="2011,2015">2011–2015</button><button data-period="2016,2020">2016–2020</button><button data-period="2021,2025">2021–2025</button><button class="selected" data-period="2011,2025">15 anos</button></div>
+ </section>
+ <div class="selection-line"><span id="selection">2011–2025 · todos os meses · todas as classes</span><span id="status" role="status">Preparando os dados do estudo…</span></div>
+ <section class="metrics" aria-label="Indicadores da seleção">
+  <article class="metric"><span>Soma das áreas anuais</span><strong id="total">—</strong><small>Hectares · inclui repetições entre anos</small></article>
+  <article class="metric"><span>Área atingida ao menos uma vez</span><strong id="unique">—</strong><small>Hectares · sem dupla contagem</small></article>
+  <article class="metric"><span>Proporção do município</span><strong id="municipal-percent">—</strong><small>Área única / área municipal</small></article>
+  <article class="metric"><span>Queima em dois ou mais anos</span><strong id="recurrent">—</strong><small>Hectares · recorrência na seleção</small></article>
+ </section>
+ <section id="overview" class="view active">
+  <div class="overview-grid">
+   <article class="panel map-panel"><div class="panel-header"><div><h3>Mapa do fogo</h3><p id="map-description">Número de anos com queima mapeada</p></div><button id="fit-map" class="small-button">Enquadrar Lavras</button></div>
+    <div class="map-presets" aria-label="Mapas do estudo"><button data-map="recurrence" class="active">Recorrência</button><button data-map="unique">Área acumulada</button><button data-map="annual">Queima por ano</button><button data-map="integration">Queima e uso do solo</button><button data-map="coverage">Cobertura 2025</button></div>
+    <div class="map-tools"><label>Camada<select id="map-layer"><option value="recurrence">Recorrência na seleção</option><option value="unique">Área atingida na seleção</option><option value="annual">Área queimada por ano · vetor</option><option value="integration">Queima e cobertura do mesmo ano · vetor</option><option value="coverage">Cobertura de 2025</option></select></label><label id="map-year-wrap">Ano do mapa<select id="map-year"></select></label><button id="play" class="small-button" aria-pressed="false">Reproduzir anos</button><label class="base-toggle"><input id="base-map" type="checkbox" checked> Mapa de referência</label><button id="expand-map" class="small-button" aria-pressed="false">Ampliar mapa</button><button id="download-vector" class="small-button">Baixar vetor do ano</button></div>
+    <div class="map-customize"><label>Opacidade das camadas <input id="opacity" type="range" min="0" max="100" value="85"><output id="opacity-value">85%</output></label><label><input id="boundary-toggle" type="checkbox" checked> Limite municipal</label><button id="focus-feature" class="small-button">Explorar maior feição</button><button id="download-boundary" class="text-button">Baixar limite vetorial</button></div>
+    <div id="map" aria-label="Mapa interativo de Lavras. Use os botões de zoom ou as teclas mais e menos."><div id="map-loading">Carregando o mapa…</div></div>
+    <div id="map-year-timeline" hidden><label for="year-slider">Navegar pelos anos</label><input id="year-slider" type="range" min="2011" max="2025" value="2017"><output id="year-value">2017</output></div>
+    <div class="map-bottom"><div id="map-legend" class="legend"></div><span>Limite municipal · pixels nativos de 30 m</span></div>
+    <div class="map-hint" id="map-info">Clique no território para consultar o histórico de um pixel. Nos mapas anuais e de integração, clique nas feições vetoriais para consultar seus dados.</div>
+   </article>
+   <div class="overview-right"><article class="panel"><div class="panel-header"><div><h3>Área queimada por ano</h3><p>Hectares · clique em um ano para selecioná-lo</p></div></div><div id="annual-chart" class="chart chart-overview" role="img" aria-label="Gráfico interativo da área queimada anual"></div><div id="peak-note" class="chart-note"></div></article>
+   <article class="panel"><div class="panel-header"><div><h3>Distribuição ao longo do ano</h3><p id="month-context">Soma mensal no intervalo selecionado</p></div></div><div id="month-chart" class="chart chart-overview" role="img" aria-label="Gráfico interativo da área por mês"></div><div id="season-note" class="chart-note"></div></article></div>
+  </div>
+  <details class="inline-note"><summary>Como interpretar a soma anual e a área única?</summary><p>Um mesmo local pode queimar em anos diferentes. A soma das áreas anuais contabiliza essas repetições; a área única considera cada parcela do território uma única vez. Recorrência representa anos com presença mapeada, não número de incêndios.</p></details>
+ </section>
+ <section id="season" class="view">
+  <article class="panel"><div class="panel-header"><div><h3>Calendário do fogo</h3><p>Área em hectares por ano e mês · clique numa célula para explorar esse recorte</p></div></div><div id="heat-chart" class="chart heat-chart" role="img" aria-label="Mapa de calor com quinze anos e doze meses"></div></article>
+  <div class="two-panels"><article class="panel"><div class="panel-header"><div><h3>Participação dos meses</h3><p>Considera o intervalo de anos e a classe selecionados; todos os meses para comparação</p></div></div><div id="season-chart" class="chart" role="img" aria-label="Participação percentual de cada mês"></div></article><article class="panel narrative"><span class="eyebrow">LEITURA DA SAZONALIDADE</span><h3>O fogo se concentra no fim da estação seca</h3><p id="season-analysis"></p><p>O mês corresponde à atribuição do produto MapBiomas Fogo. O raster não permite contar múltiplos eventos no mesmo pixel dentro de um ano.</p><button class="button secondary" id="dry-season">Comparar agosto, setembro e outubro</button><p class="small-text">O calendário mantém todos os meses visíveis para contextualizar a seleção.</p></article></div>
+ </section>
+ <section id="recurrence" class="view">
+  <div class="two-panels"><article class="panel"><div class="panel-header"><div><h3>Quantos anos cada área queimou?</h3><p>Área em hectares por recorrência na seleção; somente parcelas com queima</p></div></div><div id="recurrence-chart" class="chart" role="img" aria-label="Área por número de anos com queima"></div></article><article class="panel"><div class="panel-header"><div><h3>Comparação dos quinquênios</h3><p>Aplica o mesmo filtro de mês e classe aos três períodos completos</p></div></div><div id="period-chart" class="chart" role="img" aria-label="Área única e área recorrente em três quinquênios"></div></article></div>
+  <article class="panel narrative recurrence-note"><span class="eyebrow">RECORRÊNCIA ESPACIAL</span><h3 id="recurrence-heading">O retorno do fogo ao mesmo território</h3><p id="recurrence-analysis"></p><p>As áreas recorrentes são subconjuntos das áreas atingidas ao menos uma vez. Comparar quinquênios de igual duração evita atribuir diferenças somente ao número de anos disponíveis. Ausência de presença mapeada não comprova ausência física de fogo.</p><button class="button secondary" data-show-map="recurrence">Explorar recorrência no mapa</button></article>
+ </section>
+ <section id="coverage" class="view">
+  <article class="panel"><div class="panel-header"><div><h3>Queima e cobertura no mesmo ano</h3><p>Classes originais da Coleção 11 · filtro de anos e meses aplicado</p></div></div><div class="coverage-controls"><label>Medida de comparação<select id="coverage-measure"><option value="area">Soma das áreas queimadas (ha)</option><option value="share">Participação na área queimada (%)</option><option value="relative">Proporção ponderada da classe atingida (%)</option></select></label><span>Participação e proporção da classe têm denominadores diferentes.</span></div><div id="coverage-chart" class="chart coverage-chart" role="img" aria-label="Comparação de classes de cobertura da terra"></div></article>
+  <article class="panel"><div class="panel-header"><div><h3>Área única de 2011–2025 sobre a cobertura de 2025</h3><p>Referência fixa do estudo · não acompanha os filtros acima</p></div></div><p class="panel-intro">Este cruzamento descreve a cobertura de 2025 nos locais atingidos em algum momento de 2011–2025. Ele não identifica a cobertura existente antes de cada queima.</p><div id="unique-coverage-chart" class="chart coverage-chart" role="img" aria-label="Área única queimada classificada pela cobertura de 2025"></div></article>
+  <p class="scientific-note">Associações descritivas: estes resultados não demonstram causalidade nem medem, isoladamente, suscetibilidade ao fogo.</p>
+ </section>
+ <section id="methods" class="view">
+  <div class="two-panels"><article class="panel narrative"><span class="eyebrow">ORIGEM E UNIDADE ESPACIAL</span><h3>Dados do estudo</h3><dl class="source-list"><dt>Área de estudo</dt><dd>Lavras, Minas Gerais · <span id="area-domain"></span> ha</dd><dt>Período</dt><dd>2011–2025 · 15 anos · 180 meses</dd><dt>Fogo</dt><dd>MapBiomas Fogo, Coleção 5</dd><dt>Cobertura e uso</dt><dd>MapBiomas Brasil, Coleção 11</dd><dt>Resolução</dt><dd>30 m · grade raster original</dd><dt>Áreas</dt><dd>Área real dos pixels e interseção municipal, calculadas em SIRGAS 2000 / UTM 23S (EPSG:31983)</dd></dl><p>Não são usadas áreas constantes de 900 m². A grade de 500 m e as detecções INPE pertencem a outros blocos do projeto e não foram misturadas a este mapeamento em 30 m.</p><a href="https://brasil.mapbiomas.org/" target="_blank" rel="noopener noreferrer">Conheça o MapBiomas</a></article>
+  <article class="panel narrative"><span class="eyebrow">ANÁLISE TEMPORAL ORIGINAL</span><h3>Tendência anual de 2011–2025</h3><div id="trend-values" class="trend-values"></div><p id="trend-explanation"></p><p>O teste e a inclinação correspondem à série anual completa do estudo e não são recalculados ao aplicar filtros no portal. A série curta e a variabilidade interanual exigem cautela; ausência de significância não é prova de estabilidade.</p></article></div>
+  <article class="panel"><div class="panel-header"><div><h3>Tabelas para consulta e download</h3><p>Mesmos resultados numéricos dos processamentos validados do TCC</p></div><button id="download-original" class="small-button">Baixar tabela completa</button></div><div class="table-tools"><label for="dataset">Tabela<select id="dataset"><option value="annual">Área anual</option><option value="monthly">Área mensal</option><option value="classAnnual">Queima e cobertura anual</option><option value="classMonthly">Queima e cobertura mensal</option><option value="recurrence">Recorrência completa</option><option value="periods">Recorrência por quinquênio</option><option value="unique2025">Área única e cobertura de 2025</option><option value="trend">Mann–Kendall e Sen</option></select></label><span id="table-count"></span><button id="download-table" class="small-button">Baixar tabela filtrada</button></div><div class="table-scroll" tabindex="0"><table id="data-table"></table></div></article>
+  <details class="panel methods-detail"><summary>Definições e limites de interpretação</summary><ul><li><strong>Soma anual:</strong> soma das áreas mapeadas nos anos, preservando repetições espaciais.</li><li><strong>Área única:</strong> união das parcelas com presença mapeada em ao menos um ano da seleção.</li><li><strong>Recorrência:</strong> número de anos selecionados com presença de queima; não é contagem de incêndios.</li><li><strong>Filtro de cobertura:</strong> usa a classe do mesmo ano da queima, conforme o cruzamento descritivo validado.</li><li><strong>Participação na queima:</strong> área queimada da classe dividida pela área queimada de todas as classes.</li><li><strong>Proporção ponderada da classe:</strong> soma queimada dividida pela soma das áreas anuais da própria classe. Não é área única.</li><li><strong>Zeros:</strong> ausência de presença mapeada. Classe 0 permanece identificada como sem classificação.</li><li><strong>Limites:</strong> os produtos não são uma verdade absoluta, não identificam causas do fogo e não representam validação temática independente.</li></ul></details>
+ </section>
+ <footer>Estudo do TCC · Universidade Federal de Lavras <span>MapBiomas · Lavras-MG · 2011–2025</span></footer>
+</main>
+<dialog id="download-dialog"><form method="dialog"><h3>Exportar dados da seleção</h3><p id="export-context"></p><label>Tabela<select id="export-dataset"><option value="annual">Área anual</option><option value="monthly">Área mensal</option><option value="classAnnual">Queima e cobertura anual</option><option value="classMonthly">Queima e cobertura mensal</option></select></label><div class="dialog-actions"><button value="cancel" class="button secondary">Cancelar</button><button type="button" id="confirm-export" class="button primary">Baixar CSV</button></div></form></dialog>
+</body></html>

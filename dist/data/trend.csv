@@ -1,0 +1,2 @@
+"periodo","n","tau_kendall","S","variancia_S","Z","p_valor_bilateral","alfa","inclinacao_sen_ha_ano","ic95_inferior_ha_ano","ic95_superior_ha_ano","numero_inclinacoes_pareadas","interpretacao"
+"2011-2025",15,0.104761904761905,11,408.333333333333,0.494871659305394,0.620690717075355,0.05,15.9396887831734,-32.9087829288323,56.1639601038464,105,"Não foi detectada tendência monotônica estatisticamente significativa (a = 0,05)."

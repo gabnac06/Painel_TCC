@@ -1,0 +1,178 @@
+[
+  {
+    "dataset": "annual",
+    "file": "RESULTADOS/MAPBIOMAS_30M/PROCESSAMENTO_20260920/AREA_QUEIMADA_ANUAL.csv",
+    "sha256": "1b056064ada32bba86134846b75036d057bc0e6881305a095f87b8b29a980620",
+    "rows": 15,
+    "columns": [
+      "ano",
+      "pixels_com_presenca",
+      "area_queimada_ha",
+      "percentual_municipio"
+    ]
+  },
+  {
+    "dataset": "monthly",
+    "file": "RESULTADOS/MAPBIOMAS_30M/PROCESSAMENTO_20260920/AREA_QUEIMADA_MENSAL.csv",
+    "sha256": "1a73c945267844c2d74b323f88d97e88cb2064ae2973bd7290cdf82e6290e343",
+    "rows": 180,
+    "columns": [
+      "ano",
+      "mes",
+      "area_queimada_ha"
+    ]
+  },
+  {
+    "dataset": "recurrence",
+    "file": "RESULTADOS/MAPBIOMAS_30M/PROCESSAMENTO_20260920/AREA_POR_RECORRENCIA.csv",
+    "sha256": "0accf37d048339160329e592441f4a6fda9c09fc666c20ea17b551c9f00470b8",
+    "rows": 16,
+    "columns": [
+      "anos_com_queima",
+      "pixels_com_intersecao",
+      "area_ha",
+      "percentual_municipio"
+    ]
+  },
+  {
+    "dataset": "periods",
+    "file": "RESULTADOS/MAPBIOMAS_30M/PROCESSAMENTO_20260920/AREA_POR_RECORRENCIA_PERIODOS.csv",
+    "sha256": "e30fb9a28955c541849e28bc9b97c909128aa813d0991aa5112ad33b8c595124",
+    "rows": 18,
+    "columns": [
+      "periodo",
+      "anos_com_queima",
+      "pixels_com_intersecao",
+      "area_ha"
+    ]
+  },
+  {
+    "dataset": "classAnnual",
+    "file": "RESULTADOS/MAPBIOMAS_30M/ANALISE_20260921_FINAL/UTF8/QUEIMA_COBERTURA_ANUAL.csv",
+    "sha256": "1301c7883eb28e40887aecd83325fa7e8f1308066b201a1f4835b4a2033033c3",
+    "rows": 240,
+    "columns": [
+      "ano",
+      "codigo_original",
+      "classe",
+      "cor",
+      "area_classe_ha",
+      "area_queimada_ha",
+      "percentual_classe_queimada",
+      "participacao_na_queima_anual_pct",
+      "situacao"
+    ]
+  },
+  {
+    "dataset": "classMonthly",
+    "file": "RESULTADOS/MAPBIOMAS_30M/ANALISE_20260921_FINAL/UTF8/QUEIMA_COBERTURA_MENSAL.csv",
+    "sha256": "30ca19ccb93304a9210922a69e2f7a72edf12a8cf0021ebffb7699931836b01e",
+    "rows": 2880,
+    "columns": [
+      "ano",
+      "mes",
+      "codigo_original",
+      "classe",
+      "cor",
+      "area_queimada_ha",
+      "area_classe_ano_ha",
+      "percentual_classe_queimada_no_mes",
+      "participacao_na_queima_mensal_pct",
+      "situacao"
+    ]
+  },
+  {
+    "dataset": "classSummary",
+    "file": "RESULTADOS/MAPBIOMAS_30M/ANALISE_20260921_FINAL/UTF8/RESUMO_QUEIMA_COBERTURA_2011_2025.csv",
+    "sha256": "dc5c59831ba92678973fc6af87696865356ea5b4a834291269c7f3fa8e37f08a",
+    "rows": 16,
+    "columns": [
+      "codigo_original",
+      "classe",
+      "cor",
+      "soma_area_classe_ha_ano",
+      "soma_area_queimada_ha",
+      "participacao_na_soma_queimada_pct",
+      "percentual_ponderado_classe_queimada"
+    ]
+  },
+  {
+    "dataset": "legend",
+    "file": "RESULTADOS/MAPBIOMAS_30M/ANALISE_20260921_FINAL/UTF8/LEGENDA_COBERTURA_C11.csv",
+    "sha256": "7b03f06c6ad24953322c647bf5f07bd109fcf4151ca7ee726f4ed879569333b3",
+    "rows": 16,
+    "columns": [
+      "codigo_original",
+      "classe",
+      "cor",
+      "fonte"
+    ]
+  },
+  {
+    "dataset": "unique2025",
+    "file": "RESULTADOS/MAPBIOMAS_30M/AREA_QUEIMADA_USO_COBERTURA_20260930_REV06/TABELA_AREA_QUEIMADA_UNICA_POR_COBERTURA_2025.csv",
+    "sha256": "99d965f82aed701ae706b40383bfddc8bd8552f8b5ec22286c2dbfb03adcdfbb",
+    "rows": 15,
+    "columns": [
+      "codigo_original",
+      "classe",
+      "cor",
+      "area_total_classe_ha",
+      "area_queimada_unica_ha",
+      "participacao_area_queimada_total_pct",
+      "percentual_da_classe_atingido_pct"
+    ]
+  },
+  {
+    "dataset": "trend",
+    "file": "RESULTADOS/MAPBIOMAS_30M/TENDENCIA_TEMPORAL_20260929_UTF8/TESTE_MANN_KENDALL_SEN.csv",
+    "sha256": "1e554938eb3e2add9a66faee6b157fffa465d469ce3b53c8281672f5b4565538",
+    "rows": 1,
+    "columns": [
+      "periodo",
+      "n",
+      "tau_kendall",
+      "S",
+      "variancia_S",
+      "Z",
+      "p_valor_bilateral",
+      "alfa",
+      "inclinacao_sen_ha_ano",
+      "ic95_inferior_ha_ano",
+      "ic95_superior_ha_ano",
+      "numero_inclinacoes_pareadas",
+      "interpretacao"
+    ]
+  },
+  {
+    "dataset": "trendFit",
+    "file": "RESULTADOS/MAPBIOMAS_30M/TENDENCIA_TEMPORAL_20260929_UTF8/VALORES_AJUSTADOS_SEN.csv",
+    "sha256": "b0226fbff929a010df4fb5a352efa303799adbb993a72d220c2471a1ac502a82",
+    "rows": 15,
+    "columns": [
+      "ano",
+      "area_observada_ha",
+      "area_ajustada_sen_ha",
+      "residuo_sen_ha"
+    ]
+  },
+  {
+    "dataset": "descriptive",
+    "file": "RESULTADOS/MAPBIOMAS_30M/TENDENCIA_TEMPORAL_20260929_UTF8/ESTATISTICAS_DESCRITIVAS.csv",
+    "sha256": "d5a4c3b589ad1386d13ef2023638f6db04fd61321f80b426e4e419fecb642c94",
+    "rows": 1,
+    "columns": [
+      "periodo",
+      "n",
+      "media_ha",
+      "mediana_ha",
+      "desvio_padrao_ha",
+      "minimo_ha",
+      "ano_minimo",
+      "maximo_ha",
+      "ano_maximo",
+      "soma_areas_anuais_ha",
+      "coeficiente_variacao_pct"
+    ]
+  }
+]

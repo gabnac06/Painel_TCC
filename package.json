@@ -1,0 +1,1 @@
+{"name":"painel-tcc-lavras","private":true,"version":"1.0.0","description":"Portal interativo do mapeamento do fogo em Lavras, 2011–2025","scripts":{"check":"node --check dist/app.js && node --check dist/vector-maps.js"}}

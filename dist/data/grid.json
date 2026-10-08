@@ -1,0 +1,22 @@
+{
+  "n": 680586,
+  "width": 1175,
+  "height": 1029,
+  "bounds": [-45.180767214791345, -44.864111077139214, -21.401912486505541, -21.124602558297845],
+  "resolution": [0.00026949458523585663, 0.00026949458523585647],
+  "years": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+  "area_municipio_ha": 56429.295225846137,
+  "area_unica_ha": 5687.8354273421955,
+  "area_recorrente_ha": 1727.2613282708955,
+  "soma_anual_ha": 8107.8288196632548,
+  "recorrencia_max": 9,
+  "crs": "EPSG:4326",
+  "calculo_area": "EPSG:31983",
+  "pixel_original": "30 m",
+  "layers_order": "bandas 2011 a 2025; offset i + ano_index * n; areas em hectares; celulas base zero",
+  "exported_at": "2026-10-08",
+  "sources": {
+    "fogo": "MapBiomas Fogo - Colecao 5",
+    "cobertura": "MapBiomas Brasil - Colecao 11"
+  }
+}

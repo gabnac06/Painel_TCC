@@ -1,0 +1,107 @@
+[
+  {
+    "ano": 2011,
+    "feicoes": 782,
+    "area_vetorial_ha": 1161.8099879292254,
+    "area_validada_ha": 1161.81025470495,
+    "diferenca_ha": -0.00026677572463995602
+  },
+  {
+    "ano": 2012,
+    "feicoes": 10,
+    "area_vetorial_ha": 15.936437211672516,
+    "area_validada_ha": 15.9364290393163,
+    "diferenca_ha": 8.1723562157520746e-06
+  },
+  {
+    "ano": 2013,
+    "feicoes": 113,
+    "area_vetorial_ha": 414.79414953586212,
+    "area_validada_ha": 414.79421601863697,
+    "diferenca_ha": -6.6482774855103344e-05
+  },
+  {
+    "ano": 2014,
+    "feicoes": 185,
+    "area_vetorial_ha": 289.45126398534984,
+    "area_validada_ha": 289.45126357768203,
+    "diferenca_ha": 4.0766781239653938e-07
+  },
+  {
+    "ano": 2015,
+    "feicoes": 201,
+    "area_vetorial_ha": 365.89757722258526,
+    "area_validada_ha": 365.89766151179998,
+    "diferenca_ha": -8.4289214726140926e-05
+  },
+  {
+    "ano": 2016,
+    "feicoes": 192,
+    "area_vetorial_ha": 257.21539171379851,
+    "area_validada_ha": 257.21549078494201,
+    "diferenca_ha": -9.9071143495166325e-05
+  },
+  {
+    "ano": 2017,
+    "feicoes": 1279,
+    "area_vetorial_ha": 1991.5231043017318,
+    "area_validada_ha": 1991.5232348480899,
+    "diferenca_ha": -0.00013054635815024085
+  },
+  {
+    "ano": 2018,
+    "feicoes": 131,
+    "area_vetorial_ha": 267.17131632955102,
+    "area_validada_ha": 267.17131272530298,
+    "diferenca_ha": 3.6042480360265472e-06
+  },
+  {
+    "ano": 2019,
+    "feicoes": 102,
+    "area_vetorial_ha": 171.82833184147924,
+    "area_validada_ha": 171.828356464151,
+    "diferenca_ha": -2.4622671759289005e-05
+  },
+  {
+    "ano": 2020,
+    "feicoes": 302,
+    "area_vetorial_ha": 550.61100290950003,
+    "area_validada_ha": 550.61108368342798,
+    "diferenca_ha": -8.0773927948030178e-05
+  },
+  {
+    "ano": 2021,
+    "feicoes": 314,
+    "area_vetorial_ha": 705.39106882364956,
+    "area_validada_ha": 705.39104672117003,
+    "diferenca_ha": 2.2102479533714359e-05
+  },
+  {
+    "ano": 2022,
+    "feicoes": 264,
+    "area_vetorial_ha": 395.64561324023111,
+    "area_validada_ha": 395.64566388495598,
+    "diferenca_ha": -5.0644724865378521e-05
+  },
+  {
+    "ano": 2023,
+    "feicoes": 176,
+    "area_vetorial_ha": 248.50681794953545,
+    "area_validada_ha": 248.50681341891701,
+    "diferenca_ha": 4.5306184404125815e-06
+  },
+  {
+    "ano": 2024,
+    "feicoes": 332,
+    "area_vetorial_ha": 509.35479009106041,
+    "area_validada_ha": 509.35486056036098,
+    "diferenca_ha": -7.0469300567310711e-05
+  },
+  {
+    "ano": 2025,
+    "feicoes": 602,
+    "area_vetorial_ha": 762.69115928163808,
+    "area_validada_ha": 762.69113171955996,
+    "diferenca_ha": 2.7562078116716293e-05
+  }
+]
